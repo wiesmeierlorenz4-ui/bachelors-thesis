@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n20_inst0",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 2,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:29:25.977435+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine Heuristik verwenden, die auf der Gewichtung und den F\u00e4lligkeitsdaten basiert. Eine g\u00e4ngige Methode ist die Verwendung der WSPT-Regel (Weighted Shortest Processing Time), die die Jobs nach dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit sortiert. Allerdings m\u00fcssen wir auch die F\u00e4lligkeitsdaten ber\u00fccksichtigen, um die Versp\u00e4tungen zu minimieren.\n\nHier ist ein m\u00f6glicher Ansatz, um die Jobs zu sequenzieren:\n\n1. Berechne f\u00fcr jeden Job das Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit.\n2. Sortiere die Jobs prim\u00e4r nach diesem Verh\u00e4ltnis in absteigender Reihenfolge.\n3. Bei gleichen Verh\u00e4ltnissen, sortiere nach F\u00e4lligkeitsdatum in aufsteigender Reihenfolge.\n\nNach der Sortierung k\u00f6nnen wir die Jobs in dieser Reihenfolge einplanen und die Versp\u00e4tungen berechnen, um die objektive Funktion zu evaluieren.\n\nHier ist die resultierende Sequenz und der berechnete Wert der objektiven Funktion:\n\n```json\n{\"sequence\": [19, 7, 18, 3, 2, 1, 8, 16, 9, 17, 11, 6, 5, 15, 0, 4, 14, 13, 12, 10], \"objective_value\": 1070}\n```",
+  "openai_error": null
+}

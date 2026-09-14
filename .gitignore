@@ -1,0 +1,33 @@
+.env
+
+.venv/
+
+.idea/
+
+.claude/
+
+__MACOSX/
+
+archive/
+
+data/archive/
+
+data/test_runs/
+
+data/logs/
+
+notebooks/
+
+docs/                     # unless you specifically want architecture docs
+
+THESIS_METHODOLOGY_CORRECTIONS.md
+
+EXPERIMENT_PROVENANCE.md  # optional; not necessary publicly
+
+check_env.py
+
+legacy anything
+
+pilot scripts other than the actual Codex pilot used in the thesis
+
+code_based_self_consistency.py if it was not used in the reported study

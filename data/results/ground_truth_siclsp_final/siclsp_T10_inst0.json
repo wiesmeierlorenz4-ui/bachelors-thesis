@@ -1,0 +1,24 @@
+{
+  "instance_id": "siclsp_T10_inst0",
+  "problem": "siclsp",
+  "variant": "variable_capacity",
+  "size": 10,
+  "timestamp": "2026-08-28T18:11:37.027962+00:00",
+  "gurobi_status": 2,
+  "is_optimal": true,
+  "objective": 2745.0,
+  "gurobi_runtime_seconds": 0.0016999244689941406,
+  "wall_time_seconds": 0.0025811195373535156,
+  "production": {
+    "1": 35.0,
+    "2": 77.0,
+    "3": 41.0,
+    "4": 22.0,
+    "5": 0.0,
+    "6": 44.0,
+    "7": 68.0,
+    "8": 27.0,
+    "9": 0.0,
+    "10": 42.0
+  }
+}

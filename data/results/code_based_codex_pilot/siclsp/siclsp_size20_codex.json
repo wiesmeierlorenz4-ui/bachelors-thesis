@@ -1,0 +1,11 @@
+{
+  "problem": "siclsp",
+  "size": 20,
+  "model": "gpt-5.3-codex",
+  "reasoning_effort": "medium",
+  "success": true,
+  "n_debug_iterations": 0,
+  "verified_objective": 5053.0,
+  "gurobi_optimal": 5053.0,
+  "final_code": "import json\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Data\nperiods = list(range(1, 21))\n\ndemand = {\n    1: 10, 2: 37, 3: 34, 4: 10, 5: 36, 6: 42, 7: 11, 8: 14, 9: 33, 10: 50,\n    11: 29, 12: 42, 13: 20, 14: 37, 15: 16, 16: 28, 17: 45, 18: 44, 19: 32, 20: 22\n}\nsetup_cost = {\n    1: 482, 2: 176, 3: 257, 4: 105, 5: 211, 6: 218, 7: 393, 8: 469, 9: 346, 10: 123,\n    11: 244, 12: 228, 13: 213, 14: 298, 15: 322, 16: 269, 17: 494, 18: 362, 19: 223, 20: 428\n}\nprod_cost = {t: 0 for t in periods}\nholding_cost = {\n    1: 1, 2: 1, 3: 4, 4: 4, 5: 3, 6: 2, 7: 4, 8: 2, 9: 1, 10: 2,\n    11: 3, 12: 5, 13: 3, 14: 4, 15: 2, 16: 5, 17: 4, 18: 1, 19: 4, 20: 2\n}\ncapacity = {\n    1: 10, 2: 37, 3: 34, 4: 11, 5: 41, 6: 52, 7: 13, 8: 13, 9: 34, 10: 75,\n    11: 37, 12: 38, 13: 28, 14: 45, 15: 18, 16: 21, 17: 63, 18: 58, 19: 42, 20: 18\n}\n\n# Model\nm = gp.Model(\"single_item_lot_sizing\")\nm.Params.OutputFlag = 0\n\nx = m.addVars(periods, lb=0.0, vtype=GRB.CONTINUOUS, name=\"production\")\nI = m.addVars(periods, lb=0.0, vtype=GRB.CONTINUOUS, name=\"inventory\")\ny = m.addVars(periods, vtype=GRB.BINARY, name=\"setup\")\n\n# Capacity with setup\nfor t in periods:\n    m.addConstr(x[t] <= capacity[t] * y[t], name=f\"cap_{t}\")\n\n# Inventory balance\nfor t in periods:\n    if t == 1:\n        m.addConstr(x[t] == demand[t] + I[t], name=f\"balance_{t}\")\n    else:\n        m.addConstr(I[t - 1] + x[t] == demand[t] + I[t], name=f\"balance_{t}\")\n\n# No ending inventory after horizon\nm.addConstr(I[20] == 0, name=\"terminal_inventory\")\n\n# Objective\nm.setObjective(\n    gp.quicksum(setup_cost[t] * y[t] + prod_cost[t] * x[t] + holding_cost[t] * I[t] for t in periods),\n    GRB.MINIMIZE\n)\n\nm.optimize()\n\nproduction = {str(t): int(round(x[t].X)) for t in periods}\nresult = {\n    \"production\": production,\n    \"objective_value\": float(m.ObjVal)\n}\n\nprint(json.dumps(result))"
+}

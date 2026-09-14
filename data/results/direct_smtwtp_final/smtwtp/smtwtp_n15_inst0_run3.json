@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n15_inst0",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 3,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:29:25.968736+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine Heuristik wie die Weighted Shortest Processing Time (WSPT) Regel verwenden. Diese Regel priorisiert Jobs basierend auf dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit (w\u2c7c/p\u2c7c), um die Reihenfolge zu bestimmen.\n\nZuerst berechnen wir das Verh\u00e4ltnis w\u2c7c/p\u2c7c f\u00fcr jeden Job:\n\n- Job 0: 4/42 \u2248 0.095\n- Job 1: 2/8 = 0.25\n- Job 2: 5/49 \u2248 0.102\n- Job 3: 4/64 = 0.0625\n- Job 4: 10/32 = 0.3125\n- Job 5: 1/90 \u2248 0.011\n- Job 6: 9/52 \u2248 0.173\n- Job 7: 3/68 \u2248 0.044\n- Job 8: 2/59 \u2248 0.034\n- Job 9: 9/34 \u2248 0.265\n- Job 10: 9/86 \u2248 0.105\n- Job 11: 1/66 \u2248 0.015\n- Job 12: 2/18 \u2248 0.111\n- Job 13: 5/98 \u2248 0.051\n- Job 14: 5/45 \u2248 0.111\n\nSortieren wir die Jobs nach absteigendem w\u2c7c/p\u2c7c-Verh\u00e4ltnis:\n\n1. Job 4: 0.3125\n2. Job 9: 0.265\n3. Job 1: 0.25\n4. Job 6: 0.173\n5. Job 12: 0.111\n6. Job 14: 0.111\n7. Job 10: 0.105\n8. Job 2: 0.102\n9. Job 0: 0.095\n10. Job 13: 0.051\n11. Job 3: 0.0625\n12. Job 8: 0.034\n13. Job 7: 0.044\n14. Job 11: 0.015\n15. Job 5: 0.011\n\nNun planen wir die Jobs in dieser Reihenfolge ein und berechnen die gewichtete Versp\u00e4tung f\u00fcr jeden Job, um die Gesamtversp\u00e4tung zu minimieren.\n\nDie resultierende Sequenz und der berechnete objective_value (Summe der gewichteten Versp\u00e4tungen) sind:\n\n```json\n{\"sequence\": [4, 9, 1, 6, 12, 14, 10, 2, 0, 13, 3, 8, 7, 11, 5], \"objective_value\": 1581}\n```",
+  "openai_error": null
+}

@@ -1,0 +1,52 @@
+{
+  "conversation_history": [
+    {
+      "role": "user",
+      "content": "Du l\u00f6st ein Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c): 5 Jobs m\u00fcssen auf einer einzigen Maschine nacheinander (ohne Unterbrechung, ohne Leerlaufzeit) eingeplant werden. Ziel: Minimiere die Summe der gewichteten Versp\u00e4tungen aller Jobs.\n\nJobdaten (JSON, job_id -> {processing_time, due_date, weight}):\n{\n  \"0\": {\n    \"processing_time\": 45,\n    \"due_date\": 31,\n    \"weight\": 5\n  },\n  \"1\": {\n    \"processing_time\": 60,\n    \"due_date\": 115,\n    \"weight\": 5\n  },\n  \"2\": {\n    \"processing_time\": 73,\n    \"due_date\": 102,\n    \"weight\": 8\n  },\n  \"3\": {\n    \"processing_time\": 1,\n    \"due_date\": 56,\n    \"weight\": 5\n  },\n  \"4\": {\n    \"processing_time\": 27,\n    \"due_date\": 82,\n    \"weight\": 6\n  }\n}\n\nDefinition: Versp\u00e4tung eines Jobs = max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum).\n\nSchreibe ein vollst\u00e4ndiges, direkt ausf\u00fchrbares Python-Skript, das dieses Problem exakt l\u00f6st (z.B. via gurobipy) und am Ende via print() GENAU ein JSON-Objekt im Format {\"sequence\": [...], \"objective_value\": <Zahl>} ausgibt. WICHTIG: Unterdr\u00fccke jegliche Solver-Ausgabe (bei gurobipy z.B. model.Params.OutputFlag = 0 direkt nach Modell-Erstellung setzen) und gib KEINE weiteren print()-Ausgaben aus au\u00dfer dem finalen JSON-Objekt. Gib ausschlie\u00dflich den Code in einem einzigen ```python ...``` Block zur\u00fcck."
+    },
+    {
+      "role": "assistant",
+      "content": "```python\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    0: {\"processing_time\": 45, \"due_date\": 31, \"weight\": 5},\n    1: {\"processing_time\": 60, \"due_date\": 115, \"weight\": 5},\n    2: {\"processing_time\": 73, \"due_date\": 102, \"weight\": 8},\n    3: {\"processing_time\": 1, \"due_date\": 56, \"weight\": 5},\n    4: {\"processing_time\": 27, \"due_date\": 82, \"weight\": 6},\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0  # Suppress output\n\n# Number of jobs\nn = len(jobs)\n\n# Variables\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")  # Completion times\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")  # Tardiness\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")  # Sequencing variables\n\n# Objective: Minimize the sum of weighted tardiness\nmodel.setObjective(gp.quicksum(jobs[j][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Constraints\n# Completion time constraints\nfor j in range(n):\n    model.addConstr(C[j] >= jobs[j][\"processing_time\"] + gp.quicksum(x[i, j] * jobs[i][\"processing_time\"] for i in range(n) if i != j))\n\n# Tardiness constraints\nfor j in range(n):\n    model.addConstr(T[j] >= C[j] - jobs[j][\"due_date\"])\n\n# Sequencing constraints\nfor i in range(n):\n    for j in range(n):\n        if i != j:\n            model.addConstr(x[i, j] + x[j, i] == 1)\n\n# Solve the model\nmodel.optimize()\n\n# Extract the sequence\nsequence = sorted(range(n), key=lambda j: C[j].X)\n\n# Calculate the objective value\nobjective_value = sum(jobs[j][\"weight\"] * max(0, C[j].X - jobs[j][\"due_date\"]) for j in range(n))\n\n# Output the result\nimport json\nresult = {\"sequence\": sequence, \"objective_value\": objective_value}\nprint(json.dumps(result))\n```"
+    }
+  ],
+  "attempt_history": [
+    {
+      "attempt_index": 0,
+      "is_debug_iteration": false,
+      "technical_success": true,
+      "failure_type": null,
+      "error": null,
+      "code": "import gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    0: {\"processing_time\": 45, \"due_date\": 31, \"weight\": 5},\n    1: {\"processing_time\": 60, \"due_date\": 115, \"weight\": 5},\n    2: {\"processing_time\": 73, \"due_date\": 102, \"weight\": 8},\n    3: {\"processing_time\": 1, \"due_date\": 56, \"weight\": 5},\n    4: {\"processing_time\": 27, \"due_date\": 82, \"weight\": 6},\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0  # Suppress output\n\n# Number of jobs\nn = len(jobs)\n\n# Variables\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")  # Completion times\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")  # Tardiness\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")  # Sequencing variables\n\n# Objective: Minimize the sum of weighted tardiness\nmodel.setObjective(gp.quicksum(jobs[j][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Constraints\n# Completion time constraints\nfor j in range(n):\n    model.addConstr(C[j] >= jobs[j][\"processing_time\"] + gp.quicksum(x[i, j] * jobs[i][\"processing_time\"] for i in range(n) if i != j))\n\n# Tardiness constraints\nfor j in range(n):\n    model.addConstr(T[j] >= C[j] - jobs[j][\"due_date\"])\n\n# Sequencing constraints\nfor i in range(n):\n    for j in range(n):\n        if i != j:\n            model.addConstr(x[i, j] + x[j, i] == 1)\n\n# Solve the model\nmodel.optimize()\n\n# Extract the sequence\nsequence = sorted(range(n), key=lambda j: C[j].X)\n\n# Calculate the objective value\nobjective_value = sum(jobs[j][\"weight\"] * max(0, C[j].X - jobs[j][\"due_date\"]) for j in range(n))\n\n# Output the result\nimport json\nresult = {\"sequence\": sequence, \"objective_value\": objective_value}\nprint(json.dumps(result))",
+      "stdout": "Set parameter Username\nSet parameter LicenseID to value 2852822\nAcademic license - for non-commercial use only - expires 2027-08-11\n{\"sequence\": [0, 3, 4, 2, 1], \"objective_value\": 877.0}\n"
+    }
+  ],
+  "final_code": "import gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    0: {\"processing_time\": 45, \"due_date\": 31, \"weight\": 5},\n    1: {\"processing_time\": 60, \"due_date\": 115, \"weight\": 5},\n    2: {\"processing_time\": 73, \"due_date\": 102, \"weight\": 8},\n    3: {\"processing_time\": 1, \"due_date\": 56, \"weight\": 5},\n    4: {\"processing_time\": 27, \"due_date\": 82, \"weight\": 6},\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0  # Suppress output\n\n# Number of jobs\nn = len(jobs)\n\n# Variables\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")  # Completion times\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")  # Tardiness\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")  # Sequencing variables\n\n# Objective: Minimize the sum of weighted tardiness\nmodel.setObjective(gp.quicksum(jobs[j][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Constraints\n# Completion time constraints\nfor j in range(n):\n    model.addConstr(C[j] >= jobs[j][\"processing_time\"] + gp.quicksum(x[i, j] * jobs[i][\"processing_time\"] for i in range(n) if i != j))\n\n# Tardiness constraints\nfor j in range(n):\n    model.addConstr(T[j] >= C[j] - jobs[j][\"due_date\"])\n\n# Sequencing constraints\nfor i in range(n):\n    for j in range(n):\n        if i != j:\n            model.addConstr(x[i, j] + x[j, i] == 1)\n\n# Solve the model\nmodel.optimize()\n\n# Extract the sequence\nsequence = sorted(range(n), key=lambda j: C[j].X)\n\n# Calculate the objective value\nobjective_value = sum(jobs[j][\"weight\"] * max(0, C[j].X - jobs[j][\"due_date\"]) for j in range(n))\n\n# Output the result\nimport json\nresult = {\"sequence\": sequence, \"objective_value\": objective_value}\nprint(json.dumps(result))",
+  "final_output": "Set parameter Username\nSet parameter LicenseID to value 2852822\nAcademic license - for non-commercial use only - expires 2027-08-11\n{\"sequence\": [0, 3, 4, 2, 1], \"objective_value\": 877.0}\n",
+  "parsed_output": {
+    "sequence": [
+      0,
+      3,
+      4,
+      2,
+      1
+    ],
+    "objective_value": 877.0
+  },
+  "feasible": true,
+  "verified_objective": 877.0,
+  "success": true,
+  "failure_type": null,
+  "error": null,
+  "n_debug_iterations": 0,
+  "n_model_generations": 1,
+  "model_used": "gpt-4o-2024-08-06",
+  "reasoning_effort_used": null,
+  "instance_id": "smtwtp_n5_inst1",
+  "problem": "smtwtp",
+  "approach": "code_based_debug5",
+  "run_number": 7,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T22:01:54.385146+00:00",
+  "max_debug_iterations": 5,
+  "debug_feedback_scope": "technical_only"
+}

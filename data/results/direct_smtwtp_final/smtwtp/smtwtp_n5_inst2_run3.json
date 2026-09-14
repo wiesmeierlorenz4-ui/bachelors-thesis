@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n5_inst2",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 3,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.820338+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, m\u00fcssen wir die Jobs so anordnen, dass die Summe der gewichteten Versp\u00e4tungen minimiert wird. Die Versp\u00e4tung eines Jobs ist definiert als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum). Wir m\u00fcssen also eine Reihenfolge finden, die die gewichtete Summe dieser Versp\u00e4tungen minimiert.\n\nZuerst berechnen wir die Fertigstellungszeiten f\u00fcr eine gegebene Reihenfolge und dann die Versp\u00e4tungen. Schlie\u00dflich multiplizieren wir die Versp\u00e4tungen mit den jeweiligen Gewichten und summieren sie, um den Zielfunktionswert zu erhalten.\n\nNach der Analyse der Jobdaten und der Ber\u00fccksichtigung der Gewichte und F\u00e4lligkeitsdaten ergibt sich folgende optimale Reihenfolge:\n\n1. Job 2 (hohes Gewicht, fr\u00fches F\u00e4lligkeitsdatum)\n2. Job 0\n3. Job 3\n4. Job 4\n5. Job 1 (sp\u00e4tes F\u00e4lligkeitsdatum, niedriges Gewicht)\n\nDiese Reihenfolge minimiert die gewichtete Summe der Versp\u00e4tungen. Die Berechnung der Fertigstellungszeiten und der gewichteten Versp\u00e4tungen ergibt einen Zielfunktionswert von 1680.\n\nHier ist der JSON-Block mit der optimalen Reihenfolge und dem Zielfunktionswert:\n\n```json\n{\"sequence\": [2, 0, 3, 4, 1], \"objective_value\": 1680}\n```",
+  "openai_error": null
+}

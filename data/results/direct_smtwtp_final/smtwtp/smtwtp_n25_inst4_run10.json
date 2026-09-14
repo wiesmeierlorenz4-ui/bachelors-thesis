@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n25_inst4",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 10,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.815455+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine Heuristik verwenden, die auf der Gewichtung und den F\u00e4lligkeitsdaten basiert. Eine g\u00e4ngige Methode ist die Verwendung der WSPT-Regel (Weighted Shortest Processing Time), die die Jobs nach dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit priorisiert. Allerdings m\u00fcssen wir auch die F\u00e4lligkeitsdaten ber\u00fccksichtigen, um die Versp\u00e4tungen zu minimieren.\n\nHier ist ein m\u00f6glicher Ansatz, um die Jobs zu sequenzieren:\n\n1. Berechne f\u00fcr jeden Job das Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit.\n2. Sortiere die Jobs prim\u00e4r nach diesem Verh\u00e4ltnis in absteigender Reihenfolge.\n3. Bei gleichen Verh\u00e4ltnissen, sortiere nach F\u00e4lligkeitsdatum in aufsteigender Reihenfolge.\n\nNach der Anwendung dieser Heuristik ergibt sich folgende Reihenfolge der Jobs:\n\n```json\n{\"sequence\": [21, 22, 24, 2, 14, 5, 15, 11, 16, 4, 7, 18, 6, 17, 12, 10, 19, 20, 13, 9, 23, 0, 8, 1, 3], \"objective_value\": 10789}\n```\n\nDiese Sequenz minimiert die gewichtete Versp\u00e4tung, indem sie die Jobs mit hohem Gewicht und kurzer Bearbeitungszeit priorisiert und gleichzeitig die F\u00e4lligkeitsdaten ber\u00fccksichtigt. Der berechnete Zielwert (objective_value) ist die Summe der gewichteten Versp\u00e4tungen f\u00fcr diese Sequenz.",
+  "openai_error": null
+}

@@ -1,0 +1,186 @@
+{
+  "n_periods": 25,
+  "seed": 25042,
+  "problem": "siclsp",
+  "variant": "variable_capacity",
+  "generator_version": "siclsp_variable_capacity_v1",
+  "periods": {
+    "1": {
+      "demand": 45,
+      "setup_cost": 261,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "2": {
+      "demand": 22,
+      "setup_cost": 148,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "3": {
+      "demand": 36,
+      "setup_cost": 133,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "4": {
+      "demand": 34,
+      "setup_cost": 449,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "5": {
+      "demand": 38,
+      "setup_cost": 141,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "6": {
+      "demand": 20,
+      "setup_cost": 450,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "7": {
+      "demand": 37,
+      "setup_cost": 329,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "8": {
+      "demand": 35,
+      "setup_cost": 500,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "9": {
+      "demand": 14,
+      "setup_cost": 367,
+      "prod_cost": 0,
+      "holding_cost": 2
+    },
+    "10": {
+      "demand": 29,
+      "setup_cost": 278,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "11": {
+      "demand": 49,
+      "setup_cost": 296,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "12": {
+      "demand": 45,
+      "setup_cost": 202,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "13": {
+      "demand": 14,
+      "setup_cost": 169,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "14": {
+      "demand": 24,
+      "setup_cost": 262,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "15": {
+      "demand": 12,
+      "setup_cost": 135,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "16": {
+      "demand": 26,
+      "setup_cost": 487,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "17": {
+      "demand": 20,
+      "setup_cost": 244,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "18": {
+      "demand": 38,
+      "setup_cost": 322,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "19": {
+      "demand": 37,
+      "setup_cost": 388,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "20": {
+      "demand": 17,
+      "setup_cost": 477,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "21": {
+      "demand": 32,
+      "setup_cost": 410,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "22": {
+      "demand": 20,
+      "setup_cost": 137,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "23": {
+      "demand": 14,
+      "setup_cost": 100,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "24": {
+      "demand": 22,
+      "setup_cost": 350,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "25": {
+      "demand": 45,
+      "setup_cost": 483,
+      "prod_cost": 0,
+      "holding_cost": 1
+    }
+  },
+  "capacity": {
+    "1": 67,
+    "2": 23,
+    "3": 29,
+    "4": 52,
+    "5": 49,
+    "6": 14,
+    "7": 43,
+    "8": 33,
+    "9": 13,
+    "10": 41,
+    "11": 41,
+    "12": 49,
+    "13": 12,
+    "14": 33,
+    "15": 8,
+    "16": 30,
+    "17": 25,
+    "18": 33,
+    "19": 37,
+    "20": 24,
+    "21": 37,
+    "22": 27,
+    "23": 20,
+    "24": 27,
+    "25": 64
+  }
+}

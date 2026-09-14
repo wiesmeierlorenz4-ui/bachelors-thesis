@@ -1,0 +1,51 @@
+SUMMARY VALIDATION REPORT
+Generated: 2026-09-02T00:59:57.464793+00:00
+======================================================================
+
+## MAIN EXPERIMENT
+Expected runs: 1000
+Observed runs: 1000
+Missing runs: 0
+Duplicate runs: 0
+Count by problem:
+  SICLSP: 500
+  SMTWTP: 500
+Count by approach:
+  Code-Based: 500
+  Direct: 500
+Count by size:
+  5: 200
+  10: 200
+  15: 200
+  20: 200
+  25: 200
+Distinct instances covered: 50
+
+## CoT SUB-EXPERIMENT
+Total runs found: 500
+Problems covered: ['SICLSP', 'SMTWTP']
+Sizes covered: [5, 10, 15, 20, 25]
+Runs per instance: min=10, max=10, mean=10.00
+
+## Codex SUB-EXPERIMENT
+Total runs found: 10
+Problems covered: ['SICLSP', 'SMTWTP']
+Sizes covered: [5, 10, 15, 20, 25]
+Runs per instance: min=1, max=1, mean=1.00
+
+## DATA QUALITY
+Missing Gurobi values: 0 rows
+Missing recomputed objective among feasible rows: 0
+Rows with technical_success=False: 59
+Rows with feasible=True: 1036
+
+## LOG (ERROR / WARNING / INFO)
+--- ERROR (0) ---
+--- WARNING (0) ---
+--- INFO (4) ---
+[INFO] Loaded 25 SMTWTP instances, 25 ground-truth records.
+[INFO] Loaded 25 SICLSP instances, 25 ground-truth records.
+[INFO] MAIN experiment: expected 1000 runs (2 problems x 2 approaches x 5 sizes x 5 instances x 10 runs), observed 1000.
+[INFO] No duplicate (experiment, problem, approach, size, instance_id, run_id) combinations found.
+
+TOTAL: 0 ERROR, 0 WARNING, 4 INFO

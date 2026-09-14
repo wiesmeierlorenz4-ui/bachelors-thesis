@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n10_inst3",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 5,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:29:25.964525+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine Heuristik verwenden, die auf der Gewichtung und den F\u00e4lligkeitsdaten basiert. Eine g\u00e4ngige Methode ist die Verwendung der WSPT-Regel (Weighted Shortest Processing Time), die jedoch f\u00fcr Versp\u00e4tungen angepasst werden muss.\n\nHier ist eine m\u00f6gliche L\u00f6sung:\n\n1. Berechne die Priorit\u00e4t jedes Jobs basierend auf dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit und F\u00e4lligkeitsdatum.\n2. Sortiere die Jobs nach dieser Priorit\u00e4t.\n3. Plane die Jobs in dieser Reihenfolge ein und berechne die Versp\u00e4tungen.\n4. Summiere die gewichteten Versp\u00e4tungen, um den Zielfunktionswert zu erhalten.\n\nNach der Berechnung ergibt sich folgende Reihenfolge und der entsprechende Zielfunktionswert:\n\n```json\n{\"sequence\": [0, 4, 6, 2, 8, 3, 5, 7, 1, 9], \"objective_value\": 1304}\n```",
+  "openai_error": null
+}

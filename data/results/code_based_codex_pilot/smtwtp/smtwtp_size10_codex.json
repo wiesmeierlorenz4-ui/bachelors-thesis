@@ -1,0 +1,11 @@
+{
+  "problem": "smtwtp",
+  "size": 10,
+  "model": "gpt-5.3-codex",
+  "reasoning_effort": "medium",
+  "success": true,
+  "n_debug_iterations": 0,
+  "verified_objective": 2895.0,
+  "gurobi_optimal": 2895.0,
+  "final_code": "import json\n\n# Job data\njobs = {\n    0: {\"processing_time\": 47, \"due_date\": 238, \"weight\": 3},\n    1: {\"processing_time\": 82, \"due_date\": 281, \"weight\": 5},\n    2: {\"processing_time\": 50, \"due_date\": 213, \"weight\": 3},\n    3: {\"processing_time\": 32, \"due_date\": 252, \"weight\": 5},\n    4: {\"processing_time\": 47, \"due_date\": 65, \"weight\": 7},\n    5: {\"processing_time\": 53, \"due_date\": 194, \"weight\": 5},\n    6: {\"processing_time\": 81, \"due_date\": 106, \"weight\": 7},\n    7: {\"processing_time\": 39, \"due_date\": 254, \"weight\": 10},\n    8: {\"processing_time\": 30, \"due_date\": 262, \"weight\": 6},\n    9: {\"processing_time\": 65, \"due_date\": 208, \"weight\": 3},\n}\n\nn = len(jobs)\np = [jobs[i][\"processing_time\"] for i in range(n)]\nd = [jobs[i][\"due_date\"] for i in range(n)]\nw = [jobs[i][\"weight\"] for i in range(n)]\n\nnum_masks = 1 << n\n\n# Precompute total processing time for each subset mask\nproc_sum = [0] * num_masks\nfor mask in range(1, num_masks):\n    lsb = mask & -mask\n    j = lsb.bit_length() - 1\n    proc_sum[mask] = proc_sum[mask ^ lsb] + p[j]\n\nINF = 10**18\ndp = [INF] * num_masks\nprev_last = [-1] * num_masks\ndp[0] = 0\n\nfor mask in range(1, num_masks):\n    C = proc_sum[mask]\n    m = mask\n    while m:\n        lsb = m & -m\n        j = lsb.bit_length() - 1\n        pmask = mask ^ lsb\n        tardiness = C - d[j]\n        if tardiness < 0:\n            tardiness = 0\n        cand = dp[pmask] + w[j] * tardiness\n        if cand < dp[mask] or (cand == dp[mask] and (prev_last[mask] == -1 or j < prev_last[mask])):\n            dp[mask] = cand\n            prev_last[mask] = j\n        m ^= lsb\n\n# Reconstruct optimal sequence\nmask = num_masks - 1\nseq_rev = []\nwhile mask:\n    j = prev_last[mask]\n    seq_rev.append(j)\n    mask ^= 1 << j\nsequence = list(reversed(seq_rev))\n\nresult = {\"sequence\": sequence, \"objective_value\": int(dp[num_masks - 1])}\nprint(json.dumps(result))"
+}

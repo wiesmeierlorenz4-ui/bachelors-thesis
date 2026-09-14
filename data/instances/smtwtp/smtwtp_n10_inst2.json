@@ -1,0 +1,58 @@
+{
+  "n_jobs": 10,
+  "seed": 10044,
+  "tardiness_factor": 0.6,
+  "range_factor": 0.6,
+  "jobs": {
+    "0": {
+      "processing_time": 26,
+      "due_date": 206,
+      "weight": 10
+    },
+    "1": {
+      "processing_time": 45,
+      "due_date": 219,
+      "weight": 4
+    },
+    "2": {
+      "processing_time": 61,
+      "due_date": 276,
+      "weight": 6
+    },
+    "3": {
+      "processing_time": 23,
+      "due_date": 166,
+      "weight": 4
+    },
+    "4": {
+      "processing_time": 87,
+      "due_date": 276,
+      "weight": 1
+    },
+    "5": {
+      "processing_time": 44,
+      "due_date": 143,
+      "weight": 3
+    },
+    "6": {
+      "processing_time": 16,
+      "due_date": 263,
+      "weight": 4
+    },
+    "7": {
+      "processing_time": 2,
+      "due_date": 142,
+      "weight": 6
+    },
+    "8": {
+      "processing_time": 16,
+      "due_date": 92,
+      "weight": 3
+    },
+    "9": {
+      "processing_time": 79,
+      "due_date": 136,
+      "weight": 3
+    }
+  }
+}

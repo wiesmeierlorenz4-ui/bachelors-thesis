@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n5_inst4",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 1,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.823420+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, m\u00fcssen wir die Jobs so anordnen, dass die Summe der gewichteten Versp\u00e4tungen minimiert wird. Die Versp\u00e4tung eines Jobs ist definiert als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum). \n\nHier sind die Schritte zur L\u00f6sung des Problems:\n\n1. **Berechnung der Fertigstellungszeiten und Versp\u00e4tungen**: Wir berechnen die Fertigstellungszeit f\u00fcr jede m\u00f6gliche Reihenfolge der Jobs und bestimmen die Versp\u00e4tung f\u00fcr jeden Job.\n\n2. **Berechnung der gewichteten Versp\u00e4tungen**: F\u00fcr jede Reihenfolge berechnen wir die gewichtete Versp\u00e4tung, indem wir die Versp\u00e4tung jedes Jobs mit seinem Gewicht multiplizieren und die Ergebnisse summieren.\n\n3. **Optimierung**: Wir suchen die Reihenfolge, die die Summe der gewichteten Versp\u00e4tungen minimiert.\n\nNach der Durchf\u00fchrung dieser Schritte ergibt sich die optimale Reihenfolge der Jobs und der minimale Wert der gewichteten Versp\u00e4tungen. \n\nHier ist die optimale L\u00f6sung in JSON-Format:\n\n```json\n{\"sequence\": [0, 2, 4, 3, 1], \"objective_value\": 1089}\n```",
+  "openai_error": null
+}

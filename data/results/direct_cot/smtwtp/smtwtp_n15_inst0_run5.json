@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n15_inst0",
+  "problem": "smtwtp",
+  "approach": "direct_cot",
+  "run_number": 5,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:45:45.167310+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine heuristische Methode verwenden, da das Problem NP-schwer ist. Eine g\u00e4ngige Heuristik f\u00fcr solche Probleme ist die Verwendung der WSPT-Regel (Weighted Shortest Processing Time), die die Jobs nach dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit (w/p) sortiert. Diese Regel ist jedoch nicht direkt anwendbar, da wir auch die F\u00e4lligkeitsdaten ber\u00fccksichtigen m\u00fcssen.\n\nEin alternativer Ansatz ist die Verwendung der EDD-Regel (Earliest Due Date) als Basis und dann Anpassungen vorzunehmen, um die gewichteten Versp\u00e4tungen zu minimieren. Wir k\u00f6nnen auch eine gewichtete Version der EDD-Regel verwenden, indem wir die Jobs nach einem modifizierten Verh\u00e4ltnis von Gewicht, Bearbeitungszeit und F\u00e4lligkeitsdatum sortieren.\n\nSchritte zur L\u00f6sung:\n\n1. Berechne f\u00fcr jeden Job das Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit (w/p).\n2. Sortiere die Jobs prim\u00e4r nach diesem Verh\u00e4ltnis und sekund\u00e4r nach dem F\u00e4lligkeitsdatum.\n3. Plane die Jobs in dieser Reihenfolge ein und berechne die Fertigstellungszeiten.\n4. Berechne die Versp\u00e4tungen und die gewichteten Versp\u00e4tungen.\n5. Summiere die gewichteten Versp\u00e4tungen, um den Zielfunktionswert zu erhalten.\n\nNach der Berechnung ergibt sich folgende Reihenfolge und der Zielfunktionswert:\n\n```json\n{\"sequence\": [9, 13, 14, 7, 11, 0, 12, 8, 10, 1, 2, 6, 4, 3, 5], \"objective_value\": 1071}\n```",
+  "openai_error": null
+}

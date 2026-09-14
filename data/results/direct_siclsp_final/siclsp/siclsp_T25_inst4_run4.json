@@ -1,0 +1,10 @@
+{
+  "instance_id": "siclsp_T25_inst4",
+  "problem": "siclsp",
+  "approach": "plain_direct",
+  "run_number": 4,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:40:39.354159+00:00",
+  "raw_response": "Um das Single-Item Lot-Sizing-Problem mit Kapazit\u00e4tsrestriktion zu l\u00f6sen, m\u00fcssen wir die Produktionsmengen in jeder Periode so bestimmen, dass die Gesamtkosten (Setup + Lagerhaltung) minimiert werden und die Nachfrage jeder Periode gedeckt wird. Da die Produktionskosten pro Einheit null sind, konzentrieren wir uns auf die Minimierung der Setup- und Lagerkosten.\n\nHier ist eine m\u00f6gliche L\u00f6sung, die die Kapazit\u00e4tsgrenzen und die Nachfrage in jeder Periode ber\u00fccksichtigt:\n\n```json\n{\n  \"production\": {\n    \"1\": 47,\n    \"2\": 0,\n    \"3\": 0,\n    \"4\": 50,\n    \"5\": 46,\n    \"6\": 0,\n    \"7\": 0,\n    \"8\": 0,\n    \"9\": 42,\n    \"10\": 37,\n    \"11\": 44,\n    \"12\": 0,\n    \"13\": 45,\n    \"14\": 0,\n    \"15\": 0,\n    \"16\": 45,\n    \"17\": 0,\n    \"18\": 28,\n    \"19\": 0,\n    \"20\": 49,\n    \"21\": 14,\n    \"22\": 40,\n    \"23\": 0,\n    \"24\": 26,\n    \"25\": 17\n  },\n  \"objective_value\": 10478\n}\n```\n\nDiese L\u00f6sung stellt sicher, dass die Nachfrage in jeder Periode gedeckt wird, indem die Produktion in den Perioden mit den niedrigsten Setup-Kosten maximiert wird, w\u00e4hrend die Kapazit\u00e4tsgrenzen eingehalten werden. Die Lagerkosten werden minimiert, indem \u00fcbersch\u00fcssige Produktion in Perioden mit niedrigen Lagerkosten auf die folgenden Perioden \u00fcbertragen wird.",
+  "openai_error": null
+}

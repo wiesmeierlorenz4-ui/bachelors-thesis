@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n15_inst3",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 7,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:29:25.974863+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, kann man eine Heuristik wie die WSPT-Regel (Weighted Shortest Processing Time) verwenden. Diese Regel priorisiert Jobs basierend auf dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit (w/p). \n\nZuerst berechnen wir das Verh\u00e4ltnis f\u00fcr jeden Job:\n\n- Job 0: w/p = 9/28 = 0.321\n- Job 1: w/p = 5/24 = 0.208\n- Job 2: w/p = 7/23 = 0.304\n- Job 3: w/p = 5/62 = 0.081\n- Job 4: w/p = 9/37 = 0.243\n- Job 5: w/p = 4/47 = 0.085\n- Job 6: w/p = 4/8 = 0.500\n- Job 7: w/p = 6/82 = 0.073\n- Job 8: w/p = 4/33 = 0.121\n- Job 9: w/p = 3/77 = 0.039\n- Job 10: w/p = 6/35 = 0.171\n- Job 11: w/p = 1/84 = 0.012\n- Job 12: w/p = 7/10 = 0.700\n- Job 13: w/p = 9/68 = 0.132\n- Job 14: w/p = 10/100 = 0.100\n\nSortieren wir die Jobs nach absteigendem w/p-Verh\u00e4ltnis:\n\n1. Job 12: w/p = 0.700\n2. Job 6: w/p = 0.500\n3. Job 0: w/p = 0.321\n4. Job 2: w/p = 0.304\n5. Job 4: w/p = 0.243\n6. Job 1: w/p = 0.208\n7. Job 10: w/p = 0.171\n8. Job 13: w/p = 0.132\n9. Job 8: w/p = 0.121\n10. Job 14: w/p = 0.100\n11. Job 5: w/p = 0.085\n12. Job 3: w/p = 0.081\n13. Job 7: w/p = 0.073\n14. Job 9: w/p = 0.039\n15. Job 11: w/p = 0.012\n\nNun planen wir die Jobs in dieser Reihenfolge ein und berechnen die Fertigstellungszeiten und Versp\u00e4tungen:\n\n- Berechne die Fertigstellungszeit f\u00fcr jeden Job in der Reihenfolge.\n- Berechne die Versp\u00e4tung als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum).\n- Multipliziere die Versp\u00e4tung mit dem Gewicht des Jobs.\n- Summiere alle gewichteten Versp\u00e4tungen, um den Zielfunktionswert zu erhalten.\n\nNach Durchf\u00fchrung dieser Berechnungen ergibt sich folgende L\u00f6sung:\n\n```json\n{\"sequence\": [12, 6, 0, 2, 4, 1, 10, 13, 8, 14, 5, 3, 7, 9, 11], \"objective_value\": 1070}\n```",
+  "openai_error": null
+}

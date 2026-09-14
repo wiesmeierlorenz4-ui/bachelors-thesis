@@ -1,0 +1,108 @@
+{
+  "n_jobs": 20,
+  "seed": 20045,
+  "tardiness_factor": 0.6,
+  "range_factor": 0.6,
+  "jobs": {
+    "0": {
+      "processing_time": 3,
+      "due_date": 463,
+      "weight": 7
+    },
+    "1": {
+      "processing_time": 22,
+      "due_date": 416,
+      "weight": 4
+    },
+    "2": {
+      "processing_time": 66,
+      "due_date": 403,
+      "weight": 4
+    },
+    "3": {
+      "processing_time": 92,
+      "due_date": 603,
+      "weight": 10
+    },
+    "4": {
+      "processing_time": 43,
+      "due_date": 530,
+      "weight": 8
+    },
+    "5": {
+      "processing_time": 46,
+      "due_date": 506,
+      "weight": 2
+    },
+    "6": {
+      "processing_time": 61,
+      "due_date": 619,
+      "weight": 5
+    },
+    "7": {
+      "processing_time": 54,
+      "due_date": 481,
+      "weight": 9
+    },
+    "8": {
+      "processing_time": 36,
+      "due_date": 261,
+      "weight": 6
+    },
+    "9": {
+      "processing_time": 9,
+      "due_date": 131,
+      "weight": 8
+    },
+    "10": {
+      "processing_time": 37,
+      "due_date": 90,
+      "weight": 10
+    },
+    "11": {
+      "processing_time": 10,
+      "due_date": 407,
+      "weight": 7
+    },
+    "12": {
+      "processing_time": 96,
+      "due_date": 561,
+      "weight": 8
+    },
+    "13": {
+      "processing_time": 36,
+      "due_date": 280,
+      "weight": 10
+    },
+    "14": {
+      "processing_time": 68,
+      "due_date": 356,
+      "weight": 6
+    },
+    "15": {
+      "processing_time": 1,
+      "due_date": 223,
+      "weight": 3
+    },
+    "16": {
+      "processing_time": 64,
+      "due_date": 252,
+      "weight": 9
+    },
+    "17": {
+      "processing_time": 35,
+      "due_date": 104,
+      "weight": 2
+    },
+    "18": {
+      "processing_time": 63,
+      "due_date": 568,
+      "weight": 7
+    },
+    "19": {
+      "processing_time": 54,
+      "due_date": 392,
+      "weight": 10
+    }
+  }
+}

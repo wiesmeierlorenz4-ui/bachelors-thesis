@@ -1,0 +1,10 @@
+{
+  "instance_id": "siclsp_T20_inst2",
+  "problem": "siclsp",
+  "approach": "plain_direct",
+  "run_number": 3,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:37:36.481896+00:00",
+  "raw_response": "Um das Single-Item Lot-Sizing-Problem mit Kapazit\u00e4tsrestriktion zu l\u00f6sen, m\u00fcssen wir die Produktionsmengen in jeder Periode so planen, dass die Gesamtkosten (Setup-Kosten, Produktionskosten und Lagerhaltungskosten) minimiert werden, w\u00e4hrend die Nachfrage in jeder Periode erf\u00fcllt wird. Da die Produktionskosten pro Einheit in jeder Periode 0 sind, konzentrieren wir uns auf die Minimierung der Setup- und Lagerhaltungskosten.\n\nHier ist eine m\u00f6gliche L\u00f6sung, die die Gesamtkosten minimiert:\n\n```json\n{\"production\": {\"1\": 19, \"2\": 21, \"3\": 29, \"4\": 34, \"5\": 31, \"6\": 25, \"7\": 42, \"8\": 43, \"9\": 16, \"10\": 37, \"11\": 23, \"12\": 29, \"13\": 49, \"14\": 22, \"15\": 10, \"16\": 13, \"17\": 20, \"18\": 46, \"19\": 40, \"20\": 27}, \"objective_value\": 5793}\n```\n\nIn dieser L\u00f6sung wird in jeder Periode die maximale Kapazit\u00e4t genutzt, um die Nachfrage zu decken und die Lagerhaltungskosten zu minimieren. Die Gesamtkosten betragen 5793, was die Summe der Setup-Kosten \u00fcber alle Perioden darstellt, da keine Lagerhaltungskosten anfallen.",
+  "openai_error": null
+}

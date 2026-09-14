@@ -1,0 +1,67 @@
+{
+  "conversation_history": [
+    {
+      "role": "user",
+      "content": "Du l\u00f6st ein Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c): 20 Jobs m\u00fcssen auf einer einzigen Maschine nacheinander (ohne Unterbrechung, ohne Leerlaufzeit) eingeplant werden. Ziel: Minimiere die Summe der gewichteten Versp\u00e4tungen aller Jobs.\n\nJobdaten (JSON, job_id -> {processing_time, due_date, weight}):\n{\n  \"0\": {\n    \"processing_time\": 89,\n    \"due_date\": 621,\n    \"weight\": 10\n  },\n  \"1\": {\n    \"processing_time\": 15,\n    \"due_date\": 203,\n    \"weight\": 1\n  },\n  \"2\": {\n    \"processing_time\": 89,\n    \"due_date\": 622,\n    \"weight\": 7\n  },\n  \"3\": {\n    \"processing_time\": 23,\n    \"due_date\": 685,\n    \"weight\": 6\n  },\n  \"4\": {\n    \"processing_time\": 40,\n    \"due_date\": 475,\n    \"weight\": 10\n  },\n  \"5\": {\n    \"processing_time\": 50,\n    \"due_date\": 188,\n    \"weight\": 10\n  },\n  \"6\": {\n    \"processing_time\": 86,\n    \"due_date\": 591,\n    \"weight\": 6\n  },\n  \"7\": {\n    \"processing_time\": 43,\n    \"due_date\": 713,\n    \"weight\": 7\n  },\n  \"8\": {\n    \"processing_time\": 32,\n    \"due_date\": 156,\n    \"weight\": 9\n  },\n  \"9\": {\n    \"processing_time\": 90,\n    \"due_date\": 666,\n    \"weight\": 8\n  },\n  \"10\": {\n    \"processing_time\": 66,\n    \"due_date\": 399,\n    \"weight\": 9\n  },\n  \"11\": {\n    \"processing_time\": 68,\n    \"due_date\": 303,\n    \"weight\": 5\n  },\n  \"12\": {\n    \"processing_time\": 13,\n    \"due_date\": 502,\n    \"weight\": 5\n  },\n  \"13\": {\n    \"processing_time\": 56,\n    \"due_date\": 686,\n    \"weight\": 5\n  },\n  \"14\": {\n    \"processing_time\": 27,\n    \"due_date\": 152,\n    \"weight\": 4\n  },\n  \"15\": {\n    \"processing_time\": 40,\n    \"due_date\": 299,\n    \"weight\": 1\n  },\n  \"16\": {\n    \"processing_time\": 80,\n    \"due_date\": 507,\n    \"weight\": 6\n  },\n  \"17\": {\n    \"processing_time\": 26,\n    \"due_date\": 390,\n    \"weight\": 1\n  },\n  \"18\": {\n    \"processing_time\": 99,\n    \"due_date\": 157,\n    \"weight\": 3\n  },\n  \"19\": {\n    \"processing_time\": 2,\n    \"due_date\": 110,\n    \"weight\": 8\n  }\n}\n\nDefinition: Versp\u00e4tung eines Jobs = max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum).\n\nSchreibe ein vollst\u00e4ndiges, direkt ausf\u00fchrbares Python-Skript, das dieses Problem exakt l\u00f6st (z.B. via gurobipy) und am Ende via print() GENAU ein JSON-Objekt im Format {\"sequence\": [...], \"objective_value\": <Zahl>} ausgibt. WICHTIG: Unterdr\u00fccke jegliche Solver-Ausgabe (bei gurobipy z.B. model.Params.OutputFlag = 0 direkt nach Modell-Erstellung setzen) und gib KEINE weiteren print()-Ausgaben aus au\u00dfer dem finalen JSON-Objekt. Gib ausschlie\u00dflich den Code in einem einzigen ```python ...``` Block zur\u00fcck."
+    },
+    {
+      "role": "assistant",
+      "content": "```python\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    \"0\": {\"processing_time\": 89, \"due_date\": 621, \"weight\": 10},\n    \"1\": {\"processing_time\": 15, \"due_date\": 203, \"weight\": 1},\n    \"2\": {\"processing_time\": 89, \"due_date\": 622, \"weight\": 7},\n    \"3\": {\"processing_time\": 23, \"due_date\": 685, \"weight\": 6},\n    \"4\": {\"processing_time\": 40, \"due_date\": 475, \"weight\": 10},\n    \"5\": {\"processing_time\": 50, \"due_date\": 188, \"weight\": 10},\n    \"6\": {\"processing_time\": 86, \"due_date\": 591, \"weight\": 6},\n    \"7\": {\"processing_time\": 43, \"due_date\": 713, \"weight\": 7},\n    \"8\": {\"processing_time\": 32, \"due_date\": 156, \"weight\": 9},\n    \"9\": {\"processing_time\": 90, \"due_date\": 666, \"weight\": 8},\n    \"10\": {\"processing_time\": 66, \"due_date\": 399, \"weight\": 9},\n    \"11\": {\"processing_time\": 68, \"due_date\": 303, \"weight\": 5},\n    \"12\": {\"processing_time\": 13, \"due_date\": 502, \"weight\": 5},\n    \"13\": {\"processing_time\": 56, \"due_date\": 686, \"weight\": 5},\n    \"14\": {\"processing_time\": 27, \"due_date\": 152, \"weight\": 4},\n    \"15\": {\"processing_time\": 40, \"due_date\": 299, \"weight\": 1},\n    \"16\": {\"processing_time\": 80, \"due_date\": 507, \"weight\": 6},\n    \"17\": {\"processing_time\": 26, \"due_date\": 390, \"weight\": 1},\n    \"18\": {\"processing_time\": 99, \"due_date\": 157, \"weight\": 3},\n    \"19\": {\"processing_time\": 2, \"due_date\": 110, \"weight\": 8}\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0\n\n# Create variables\nn = len(jobs)\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")\n\n# Set objective\nmodel.setObjective(gp.quicksum(jobs[str(j)][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Add constraints\nmodel.addConstrs((gp.quicksum(x[i, j] for j in range(n)) == 1 for i in range(n)), name=\"assign_once\")\nmodel.addConstrs((gp.quicksum(x[j, i] for j in range(n)) == 1 for i in range(n)), name=\"assigned_once\")\n\nmodel.addConstrs((C[j] >= jobs[str(i)][\"processing_time\"] + gp.quicksum(\n    jobs[str(k)][\"processing_time\"] * x[k, j] for k in range(n) if k != i) for i in range(n) for j in range(n) if i != j), name=\"completion_time\")\n\nmodel.addConstrs((T[j] >= C[j] - jobs[str(j)][\"due_date\"] for j in range(n)), name=\"tardiness\")\n\n# Optimize model\nmodel.optimize()\n\n# Extract the sequence\nsequence = [j for j in range(n) for i in range(n) if x[i, j].X > 0.5]\n\n# Extract the objective value\nobjective_value = model.ObjVal\n\n# Print the result as JSON\nimport json\nprint(json.dumps({\"sequence\": sequence, \"objective_value\": objective_value}))\n```"
+    }
+  ],
+  "attempt_history": [
+    {
+      "attempt_index": 0,
+      "is_debug_iteration": false,
+      "technical_success": true,
+      "failure_type": null,
+      "error": null,
+      "code": "import gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    \"0\": {\"processing_time\": 89, \"due_date\": 621, \"weight\": 10},\n    \"1\": {\"processing_time\": 15, \"due_date\": 203, \"weight\": 1},\n    \"2\": {\"processing_time\": 89, \"due_date\": 622, \"weight\": 7},\n    \"3\": {\"processing_time\": 23, \"due_date\": 685, \"weight\": 6},\n    \"4\": {\"processing_time\": 40, \"due_date\": 475, \"weight\": 10},\n    \"5\": {\"processing_time\": 50, \"due_date\": 188, \"weight\": 10},\n    \"6\": {\"processing_time\": 86, \"due_date\": 591, \"weight\": 6},\n    \"7\": {\"processing_time\": 43, \"due_date\": 713, \"weight\": 7},\n    \"8\": {\"processing_time\": 32, \"due_date\": 156, \"weight\": 9},\n    \"9\": {\"processing_time\": 90, \"due_date\": 666, \"weight\": 8},\n    \"10\": {\"processing_time\": 66, \"due_date\": 399, \"weight\": 9},\n    \"11\": {\"processing_time\": 68, \"due_date\": 303, \"weight\": 5},\n    \"12\": {\"processing_time\": 13, \"due_date\": 502, \"weight\": 5},\n    \"13\": {\"processing_time\": 56, \"due_date\": 686, \"weight\": 5},\n    \"14\": {\"processing_time\": 27, \"due_date\": 152, \"weight\": 4},\n    \"15\": {\"processing_time\": 40, \"due_date\": 299, \"weight\": 1},\n    \"16\": {\"processing_time\": 80, \"due_date\": 507, \"weight\": 6},\n    \"17\": {\"processing_time\": 26, \"due_date\": 390, \"weight\": 1},\n    \"18\": {\"processing_time\": 99, \"due_date\": 157, \"weight\": 3},\n    \"19\": {\"processing_time\": 2, \"due_date\": 110, \"weight\": 8}\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0\n\n# Create variables\nn = len(jobs)\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")\n\n# Set objective\nmodel.setObjective(gp.quicksum(jobs[str(j)][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Add constraints\nmodel.addConstrs((gp.quicksum(x[i, j] for j in range(n)) == 1 for i in range(n)), name=\"assign_once\")\nmodel.addConstrs((gp.quicksum(x[j, i] for j in range(n)) == 1 for i in range(n)), name=\"assigned_once\")\n\nmodel.addConstrs((C[j] >= jobs[str(i)][\"processing_time\"] + gp.quicksum(\n    jobs[str(k)][\"processing_time\"] * x[k, j] for k in range(n) if k != i) for i in range(n) for j in range(n) if i != j), name=\"completion_time\")\n\nmodel.addConstrs((T[j] >= C[j] - jobs[str(j)][\"due_date\"] for j in range(n)), name=\"tardiness\")\n\n# Optimize model\nmodel.optimize()\n\n# Extract the sequence\nsequence = [j for j in range(n) for i in range(n) if x[i, j].X > 0.5]\n\n# Extract the objective value\nobjective_value = model.ObjVal\n\n# Print the result as JSON\nimport json\nprint(json.dumps({\"sequence\": sequence, \"objective_value\": objective_value}))",
+      "stdout": "Set parameter Username\nSet parameter LicenseID to value 2852822\nAcademic license - for non-commercial use only - expires 2027-08-11\n{\"sequence\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], \"objective_value\": 0.0}\n"
+    }
+  ],
+  "final_code": "import gurobipy as gp\nfrom gurobipy import GRB\n\n# Job data\njobs = {\n    \"0\": {\"processing_time\": 89, \"due_date\": 621, \"weight\": 10},\n    \"1\": {\"processing_time\": 15, \"due_date\": 203, \"weight\": 1},\n    \"2\": {\"processing_time\": 89, \"due_date\": 622, \"weight\": 7},\n    \"3\": {\"processing_time\": 23, \"due_date\": 685, \"weight\": 6},\n    \"4\": {\"processing_time\": 40, \"due_date\": 475, \"weight\": 10},\n    \"5\": {\"processing_time\": 50, \"due_date\": 188, \"weight\": 10},\n    \"6\": {\"processing_time\": 86, \"due_date\": 591, \"weight\": 6},\n    \"7\": {\"processing_time\": 43, \"due_date\": 713, \"weight\": 7},\n    \"8\": {\"processing_time\": 32, \"due_date\": 156, \"weight\": 9},\n    \"9\": {\"processing_time\": 90, \"due_date\": 666, \"weight\": 8},\n    \"10\": {\"processing_time\": 66, \"due_date\": 399, \"weight\": 9},\n    \"11\": {\"processing_time\": 68, \"due_date\": 303, \"weight\": 5},\n    \"12\": {\"processing_time\": 13, \"due_date\": 502, \"weight\": 5},\n    \"13\": {\"processing_time\": 56, \"due_date\": 686, \"weight\": 5},\n    \"14\": {\"processing_time\": 27, \"due_date\": 152, \"weight\": 4},\n    \"15\": {\"processing_time\": 40, \"due_date\": 299, \"weight\": 1},\n    \"16\": {\"processing_time\": 80, \"due_date\": 507, \"weight\": 6},\n    \"17\": {\"processing_time\": 26, \"due_date\": 390, \"weight\": 1},\n    \"18\": {\"processing_time\": 99, \"due_date\": 157, \"weight\": 3},\n    \"19\": {\"processing_time\": 2, \"due_date\": 110, \"weight\": 8}\n}\n\n# Create a new model\nmodel = gp.Model(\"single_machine_scheduling\")\nmodel.Params.OutputFlag = 0\n\n# Create variables\nn = len(jobs)\nx = model.addVars(n, n, vtype=GRB.BINARY, name=\"x\")\nC = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"C\")\nT = model.addVars(n, vtype=GRB.CONTINUOUS, name=\"T\")\n\n# Set objective\nmodel.setObjective(gp.quicksum(jobs[str(j)][\"weight\"] * T[j] for j in range(n)), GRB.MINIMIZE)\n\n# Add constraints\nmodel.addConstrs((gp.quicksum(x[i, j] for j in range(n)) == 1 for i in range(n)), name=\"assign_once\")\nmodel.addConstrs((gp.quicksum(x[j, i] for j in range(n)) == 1 for i in range(n)), name=\"assigned_once\")\n\nmodel.addConstrs((C[j] >= jobs[str(i)][\"processing_time\"] + gp.quicksum(\n    jobs[str(k)][\"processing_time\"] * x[k, j] for k in range(n) if k != i) for i in range(n) for j in range(n) if i != j), name=\"completion_time\")\n\nmodel.addConstrs((T[j] >= C[j] - jobs[str(j)][\"due_date\"] for j in range(n)), name=\"tardiness\")\n\n# Optimize model\nmodel.optimize()\n\n# Extract the sequence\nsequence = [j for j in range(n) for i in range(n) if x[i, j].X > 0.5]\n\n# Extract the objective value\nobjective_value = model.ObjVal\n\n# Print the result as JSON\nimport json\nprint(json.dumps({\"sequence\": sequence, \"objective_value\": objective_value}))",
+  "final_output": "Set parameter Username\nSet parameter LicenseID to value 2852822\nAcademic license - for non-commercial use only - expires 2027-08-11\n{\"sequence\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], \"objective_value\": 0.0}\n",
+  "parsed_output": {
+    "sequence": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "objective_value": 0.0
+  },
+  "feasible": true,
+  "verified_objective": 25343.0,
+  "success": true,
+  "failure_type": null,
+  "error": null,
+  "n_debug_iterations": 0,
+  "n_model_generations": 1,
+  "model_used": "gpt-4o-2024-08-06",
+  "reasoning_effort_used": null,
+  "instance_id": "smtwtp_n20_inst2",
+  "problem": "smtwtp",
+  "approach": "code_based_debug5",
+  "run_number": 10,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T20:28:53.454384+00:00",
+  "max_debug_iterations": 5,
+  "debug_feedback_scope": "technical_only"
+}

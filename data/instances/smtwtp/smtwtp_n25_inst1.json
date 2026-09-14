@@ -1,0 +1,133 @@
+{
+  "n_jobs": 25,
+  "seed": 25043,
+  "tardiness_factor": 0.6,
+  "range_factor": 0.6,
+  "jobs": {
+    "0": {
+      "processing_time": 57,
+      "due_date": 187,
+      "weight": 9
+    },
+    "1": {
+      "processing_time": 30,
+      "due_date": 341,
+      "weight": 9
+    },
+    "2": {
+      "processing_time": 11,
+      "due_date": 563,
+      "weight": 4
+    },
+    "3": {
+      "processing_time": 43,
+      "due_date": 485,
+      "weight": 1
+    },
+    "4": {
+      "processing_time": 95,
+      "due_date": 587,
+      "weight": 9
+    },
+    "5": {
+      "processing_time": 26,
+      "due_date": 449,
+      "weight": 2
+    },
+    "6": {
+      "processing_time": 5,
+      "due_date": 156,
+      "weight": 7
+    },
+    "7": {
+      "processing_time": 99,
+      "due_date": 549,
+      "weight": 2
+    },
+    "8": {
+      "processing_time": 39,
+      "due_date": 114,
+      "weight": 5
+    },
+    "9": {
+      "processing_time": 13,
+      "due_date": 156,
+      "weight": 10
+    },
+    "10": {
+      "processing_time": 26,
+      "due_date": 642,
+      "weight": 5
+    },
+    "11": {
+      "processing_time": 71,
+      "due_date": 222,
+      "weight": 5
+    },
+    "12": {
+      "processing_time": 62,
+      "due_date": 575,
+      "weight": 6
+    },
+    "13": {
+      "processing_time": 1,
+      "due_date": 225,
+      "weight": 5
+    },
+    "14": {
+      "processing_time": 70,
+      "due_date": 314,
+      "weight": 4
+    },
+    "15": {
+      "processing_time": 50,
+      "due_date": 178,
+      "weight": 9
+    },
+    "16": {
+      "processing_time": 32,
+      "due_date": 265,
+      "weight": 9
+    },
+    "17": {
+      "processing_time": 94,
+      "due_date": 671,
+      "weight": 4
+    },
+    "18": {
+      "processing_time": 97,
+      "due_date": 480,
+      "weight": 4
+    },
+    "19": {
+      "processing_time": 29,
+      "due_date": 110,
+      "weight": 3
+    },
+    "20": {
+      "processing_time": 26,
+      "due_date": 487,
+      "weight": 3
+    },
+    "21": {
+      "processing_time": 23,
+      "due_date": 390,
+      "weight": 6
+    },
+    "22": {
+      "processing_time": 13,
+      "due_date": 456,
+      "weight": 2
+    },
+    "23": {
+      "processing_time": 32,
+      "due_date": 444,
+      "weight": 6
+    },
+    "24": {
+      "processing_time": 28,
+      "due_date": 145,
+      "weight": 9
+    }
+  }
+}

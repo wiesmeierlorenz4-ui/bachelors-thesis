@@ -1,0 +1,11 @@
+problem,size,expected_runs,observed_runs,technical_success_count,technical_failure_count,feasible_count,infeasible_count,technical_success_rate,conditional_feasibility_rate,overall_feasible_solution_rate,optimal_solution_count,optimal_solution_rate,gap_count,gap_mean_pct,gap_median_pct,gap_std_pct,gap_min_pct,gap_max_pct,gap_q25_pct,gap_q75_pct,gap_iqr_pct,objective_mean,objective_median,objective_std,runtime_count,runtime_mean_seconds,runtime_median_seconds,runtime_std_seconds,runtime_min_seconds,runtime_max_seconds,debug_iterations_count,debug_iterations_mean,debug_iterations_median,debug_iterations_std,first_attempt_success_rate,debug_exhaustion_count,instance_consistency_mean,instance_consistency_median,instance_consistency_std,n_instances_observed
+SICLSP,5,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,743.0,743.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SICLSP,10,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2745.0,2745.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SICLSP,15,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4680.0,4680.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SICLSP,20,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5053.0,5053.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SICLSP,25,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6797.0,6797.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SMTWTP,5,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,630.0,630.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SMTWTP,10,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2895.0,2895.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SMTWTP,15,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1645.0,1645.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SMTWTP,20,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4690.0,4690.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1
+SMTWTP,25,1,1,1,0,1,0,1.0,1.0,1.0,1,1.0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5825.0,5825.0,0.0,0,,,,,,1,0.0,0.0,0.0,1.0,,1.0,1.0,0.0,1

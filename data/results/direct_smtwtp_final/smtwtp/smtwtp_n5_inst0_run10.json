@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n5_inst0",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 10,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.817358+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, m\u00fcssen wir die Jobs so anordnen, dass die Summe der gewichteten Versp\u00e4tungen minimiert wird. Die Versp\u00e4tung eines Jobs ist definiert als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum).\n\nZuerst berechnen wir die Fertigstellungszeiten f\u00fcr verschiedene Sequenzen und die entsprechenden gewichteten Versp\u00e4tungen. Eine g\u00e4ngige Heuristik f\u00fcr dieses Problem ist die WSPT-Regel (Weighted Shortest Processing Time), die besagt, dass Jobs in der Reihenfolge ihres Gewichts geteilt durch ihre Bearbeitungszeit geplant werden sollten. Wir berechnen den Wert w/p f\u00fcr jeden Job:\n\n- Job 0: w/p = 4/28 \u2248 0.143\n- Job 1: w/p = 2/97 \u2248 0.021\n- Job 2: w/p = 6/96 \u2248 0.0625\n- Job 3: w/p = 4/68 \u2248 0.0588\n- Job 4: w/p = 8/6 \u2248 1.333\n\nSortieren wir die Jobs nach absteigendem w/p-Wert, erhalten wir die Reihenfolge: Job 4, Job 0, Job 2, Job 3, Job 1.\n\nNun berechnen wir die Fertigstellungszeiten und die gewichteten Versp\u00e4tungen f\u00fcr diese Reihenfolge:\n\n1. Job 4: Fertigstellungszeit = 6, Versp\u00e4tung = max(0, 6 - 76) = 0\n2. Job 0: Fertigstellungszeit = 6 + 28 = 34, Versp\u00e4tung = max(0, 34 - 54) = 0\n3. Job 2: Fertigstellungszeit = 34 + 96 = 130, Versp\u00e4tung = max(0, 130 - 185) = 0\n4. Job 3: Fertigstellungszeit = 130 + 68 = 198, Versp\u00e4tung = max(0, 198 - 31) = 167\n5. Job 1: Fertigstellungszeit = 198 + 97 = 295, Versp\u00e4tung = max(0, 295 - 161) = 134\n\nDie gewichteten Versp\u00e4tungen sind:\n- Job 4: 0 * 8 = 0\n- Job 0: 0 * 4 = 0\n- Job 2: 0 * 6 = 0\n- Job 3: 167 * 4 = 668\n- Job 1: 134 * 2 = 268\n\nDie Summe der gewichteten Versp\u00e4tungen ist 0 + 0 + 0 + 668 + 268 = 936.\n\nDaher ist die optimale Sequenz und der minimale Wert der gewichteten Versp\u00e4tungen:\n\n```json\n{\"sequence\": [4, 0, 2, 3, 1], \"objective_value\": 936}\n```",
+  "openai_error": null
+}

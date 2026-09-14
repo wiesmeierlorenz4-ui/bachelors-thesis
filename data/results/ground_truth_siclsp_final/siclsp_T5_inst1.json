@@ -1,0 +1,19 @@
+{
+  "instance_id": "siclsp_T5_inst1",
+  "problem": "siclsp",
+  "variant": "variable_capacity",
+  "size": 5,
+  "timestamp": "2026-08-28T18:11:37.074917+00:00",
+  "gurobi_status": 2,
+  "is_optimal": true,
+  "objective": 1640.0,
+  "gurobi_runtime_seconds": 0.0004410743713378906,
+  "wall_time_seconds": 0.0007801055908203125,
+  "production": {
+    "1": 32.0,
+    "2": 51.0,
+    "3": 44.0,
+    "4": 0.0,
+    "5": 23.0
+  }
+}

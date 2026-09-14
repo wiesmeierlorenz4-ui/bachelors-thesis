@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n5_inst3",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 2,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.821905+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, m\u00fcssen wir die Jobs so anordnen, dass die Summe der gewichteten Versp\u00e4tungen minimiert wird. Die Versp\u00e4tung eines Jobs ist definiert als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum). \n\nUm die optimale Reihenfolge zu finden, k\u00f6nnen wir eine Heuristik verwenden, die die Jobs nach einem bestimmten Kriterium sortiert. Eine g\u00e4ngige Methode ist die Verwendung des WSPT (Weighted Shortest Processing Time) Regel, die die Jobs nach dem Verh\u00e4ltnis Gewicht/Bearbeitungszeit sortiert. \n\nBerechnen wir das Verh\u00e4ltnis Gewicht/Bearbeitungszeit f\u00fcr jeden Job:\n\n- Job 0: Gewicht/Bearbeitungszeit = 2/30 \u2248 0.067\n- Job 1: Gewicht/Bearbeitungszeit = 1/1 = 1.0\n- Job 2: Gewicht/Bearbeitungszeit = 6/18 \u2248 0.333\n- Job 3: Gewicht/Bearbeitungszeit = 2/98 \u2248 0.020\n- Job 4: Gewicht/Bearbeitungszeit = 5/58 \u2248 0.086\n\nSortieren wir die Jobs nach absteigendem Gewicht/Bearbeitungszeit-Verh\u00e4ltnis:\n\n1. Job 1 (1.0)\n2. Job 2 (0.333)\n3. Job 4 (0.086)\n4. Job 0 (0.067)\n5. Job 3 (0.020)\n\nNun berechnen wir die Fertigstellungszeiten und die gewichteten Versp\u00e4tungen:\n\n- Job 1: Fertigstellungszeit = 1, Versp\u00e4tung = max(0, 1 - 75) = 0\n- Job 2: Fertigstellungszeit = 1 + 18 = 19, Versp\u00e4tung = max(0, 19 - 87) = 0\n- Job 4: Fertigstellungszeit = 19 + 58 = 77, Versp\u00e4tung = max(0, 77 - 138) = 0\n- Job 0: Fertigstellungszeit = 77 + 30 = 107, Versp\u00e4tung = max(0, 107 - 34) = 73, gewichtete Versp\u00e4tung = 73 * 2 = 146\n- Job 3: Fertigstellungszeit = 107 + 98 = 205, Versp\u00e4tung = max(0, 205 - 114) = 91, gewichtete Versp\u00e4tung = 91 * 2 = 182\n\nDie Summe der gewichteten Versp\u00e4tungen ist 146 + 182 = 328.\n\nDie optimale Reihenfolge und der Zielwert sind:\n\n```json\n{\"sequence\": [1, 2, 4, 0, 3], \"objective_value\": 328}\n```",
+  "openai_error": null
+}

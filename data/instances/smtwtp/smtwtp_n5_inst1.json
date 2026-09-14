@@ -1,0 +1,33 @@
+{
+  "n_jobs": 5,
+  "seed": 5043,
+  "tardiness_factor": 0.6,
+  "range_factor": 0.6,
+  "jobs": {
+    "0": {
+      "processing_time": 45,
+      "due_date": 31,
+      "weight": 5
+    },
+    "1": {
+      "processing_time": 60,
+      "due_date": 115,
+      "weight": 5
+    },
+    "2": {
+      "processing_time": 73,
+      "due_date": 102,
+      "weight": 8
+    },
+    "3": {
+      "processing_time": 1,
+      "due_date": 56,
+      "weight": 5
+    },
+    "4": {
+      "processing_time": 27,
+      "due_date": 82,
+      "weight": 6
+    }
+  }
+}

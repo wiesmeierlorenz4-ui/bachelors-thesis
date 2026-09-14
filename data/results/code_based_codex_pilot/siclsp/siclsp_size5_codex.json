@@ -1,0 +1,11 @@
+{
+  "problem": "siclsp",
+  "size": 5,
+  "model": "gpt-5.3-codex",
+  "reasoning_effort": "medium",
+  "success": true,
+  "n_debug_iterations": 0,
+  "verified_objective": 743.0,
+  "gurobi_optimal": 743.0,
+  "final_code": "import json\nimport gurobipy as gp\nfrom gurobipy import GRB\n\n# Data\nperiods = [1, 2, 3, 4, 5]\n\ndata = {\n    1: {\"demand\": 23, \"setup_cost\": 339, \"prod_cost\": 0, \"holding_cost\": 2},\n    2: {\"demand\": 43, \"setup_cost\": 103, \"prod_cost\": 0, \"holding_cost\": 1},\n    3: {\"demand\": 12, \"setup_cost\": 282, \"prod_cost\": 0, \"holding_cost\": 3},\n    4: {\"demand\": 18, \"setup_cost\": 235, \"prod_cost\": 0, \"holding_cost\": 2},\n    5: {\"demand\": 16, \"setup_cost\": 201, \"prod_cost\": 0, \"holding_cost\": 4},\n}\n\ncapacity = {\n    1: 31,\n    2: 65,\n    3: 16,\n    4: 17,\n    5: 26\n}\n\n# Model\nm = gp.Model(\"single_item_lot_sizing\")\nm.Params.OutputFlag = 0\n\n# Decision variables\nx = m.addVars(periods, lb=0.0, vtype=GRB.CONTINUOUS, name=\"production\")\ny = m.addVars(periods, vtype=GRB.BINARY, name=\"setup\")\nI = m.addVars(periods, lb=0.0, vtype=GRB.CONTINUOUS, name=\"inventory\")\n\n# Capacity-link constraints\nfor t in periods:\n    m.addConstr(x[t] <= capacity[t] * y[t], name=f\"cap_link_{t}\")\n\n# Inventory balance constraints\n# Period 1: I0 = 0\nm.addConstr(x[1] == data[1][\"demand\"] + I[1], name=\"balance_1\")\nfor t in periods[1:]:\n    m.addConstr(I[t - 1] + x[t] == data[t][\"demand\"] + I[t], name=f\"balance_{t}\")\n\n# No ending inventory after final period\nm.addConstr(I[5] == 0, name=\"ending_inventory_zero\")\n\n# Objective: setup + production + holding\nobj = gp.quicksum(\n    data[t][\"setup_cost\"] * y[t]\n    + data[t][\"prod_cost\"] * x[t]\n    + data[t][\"holding_cost\"] * I[t]\n    for t in periods\n)\nm.setObjective(obj, GRB.MINIMIZE)\n\n# Solve\nm.optimize()\n\n# Prepare output\nproduction = {}\nfor t in periods:\n    val = x[t].X\n    if abs(val - round(val)) <= 1e-9:\n        val = int(round(val))\n    production[str(t)] = val\n\nobj_val = m.ObjVal\nif abs(obj_val - round(obj_val)) <= 1e-9:\n    obj_val = int(round(obj_val))\n\nresult = {\n    \"production\": production,\n    \"objective_value\": obj_val\n}\n\nprint(json.dumps(result))"
+}

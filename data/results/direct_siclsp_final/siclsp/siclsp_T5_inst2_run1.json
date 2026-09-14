@@ -1,0 +1,10 @@
+{
+  "instance_id": "siclsp_T5_inst2",
+  "problem": "siclsp",
+  "approach": "plain_direct",
+  "run_number": 1,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:40:39.361695+00:00",
+  "raw_response": "Um das Single-Item Lot-Sizing-Problem mit Kapazit\u00e4tsrestriktion zu l\u00f6sen, m\u00fcssen wir die Produktionsmengen in jeder Periode so bestimmen, dass die Gesamtkosten minimiert werden und die Nachfrage in jeder Periode gedeckt wird. Die Produktionskosten pro Einheit sind in allen Perioden 0, daher beeinflussen nur die Setup-Kosten und Lagerkosten die Entscheidung.\n\nHier ist eine m\u00f6gliche L\u00f6sung:\n\n- In Periode 1 produzieren wir 35 Einheiten (maximale Kapazit\u00e4t), um die Nachfrage von 25 Einheiten zu decken und 10 Einheiten f\u00fcr die n\u00e4chste Periode zu lagern.\n- In Periode 2 produzieren wir 26 Einheiten (36 Nachfrage - 10 gelagerte Einheiten aus Periode 1), um die Nachfrage zu decken.\n- In Periode 3 produzieren wir 30 Einheiten, um die Nachfrage zu decken.\n- In Periode 4 produzieren wir 23 Einheiten, um die Nachfrage zu decken.\n- In Periode 5 produzieren wir 44 Einheiten, um die Nachfrage zu decken.\n\nDie Gesamtkosten setzen sich aus den Setup-Kosten und den Lagerkosten zusammen. Die Lagerkosten entstehen nur in Periode 1, da wir 10 Einheiten lagern.\n\n```json\n{\"production\": {\"1\": 35, \"2\": 26, \"3\": 30, \"4\": 23, \"5\": 44}, \"objective_value\": 175 + 135 + 365 + 239 + 384 + 10*2}\n```",
+  "openai_error": null
+}

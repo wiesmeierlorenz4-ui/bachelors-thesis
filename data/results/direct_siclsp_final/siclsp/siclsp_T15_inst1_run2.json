@@ -1,0 +1,10 @@
+{
+  "instance_id": "siclsp_T15_inst1",
+  "problem": "siclsp",
+  "approach": "plain_direct",
+  "run_number": 2,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:35:34.025379+00:00",
+  "raw_response": "Um das Single-Item Lot-Sizing-Problem mit Kapazit\u00e4tsrestriktion zu l\u00f6sen, m\u00fcssen wir die Produktionsmengen in jeder Periode so planen, dass die Gesamtkosten minimiert werden, w\u00e4hrend die Nachfrage in jeder Periode erf\u00fcllt wird. Die Produktionsmengen d\u00fcrfen die Kapazit\u00e4tsgrenzen nicht \u00fcberschreiten, und es gibt keine Produktionskosten pro Einheit, aber es fallen Lagerkosten f\u00fcr nicht verkaufte Mengen an.\n\nHier ist eine m\u00f6gliche L\u00f6sung, die die Gesamtkosten minimiert:\n\n```json\n{\n  \"production\": {\n    \"1\": 40,\n    \"2\": 45,\n    \"3\": 56,\n    \"4\": 28,\n    \"5\": 48,\n    \"6\": 20,\n    \"7\": 35,\n    \"8\": 45,\n    \"9\": 12,\n    \"10\": 27,\n    \"11\": 11,\n    \"12\": 21,\n    \"13\": 15,\n    \"14\": 12,\n    \"15\": 21\n  },\n  \"objective_value\": 5180\n}\n```\n\nIn dieser L\u00f6sung wird in jeder Periode so viel wie m\u00f6glich produziert, um die Nachfrage zu decken und die Lagerkosten zu minimieren. Die Produktionsmengen sind so gew\u00e4hlt, dass sie die Kapazit\u00e4tsgrenzen nicht \u00fcberschreiten. Die Gesamtkosten setzen sich aus den Setup-Kosten und den Lagerkosten zusammen.",
+  "openai_error": null
+}

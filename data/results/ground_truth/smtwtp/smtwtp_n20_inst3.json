@@ -1,0 +1,33 @@
+{
+  "instance_id": "smtwtp_n20_inst3",
+  "problem": "smtwtp",
+  "size": 20,
+  "timestamp": "2026-08-28T18:10:04.342751+00:00",
+  "gurobi_status": 2,
+  "is_optimal": true,
+  "objective": 4929.0,
+  "gurobi_runtime_seconds": 7.326114892959595,
+  "wall_time_seconds": 7.396518230438232,
+  "sequence": [
+    "10",
+    "9",
+    "17",
+    "16",
+    "8",
+    "15",
+    "13",
+    "19",
+    "14",
+    "1",
+    "11",
+    "0",
+    "4",
+    "7",
+    "18",
+    "3",
+    "12",
+    "6",
+    "2",
+    "5"
+  ]
+}

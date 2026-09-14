@@ -1,0 +1,116 @@
+{
+  "n_periods": 15,
+  "seed": 15044,
+  "problem": "siclsp",
+  "variant": "variable_capacity",
+  "generator_version": "siclsp_variable_capacity_v1",
+  "periods": {
+    "1": {
+      "demand": 42,
+      "setup_cost": 106,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "2": {
+      "demand": 46,
+      "setup_cost": 113,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "3": {
+      "demand": 46,
+      "setup_cost": 407,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "4": {
+      "demand": 26,
+      "setup_cost": 346,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "5": {
+      "demand": 37,
+      "setup_cost": 481,
+      "prod_cost": 0,
+      "holding_cost": 2
+    },
+    "6": {
+      "demand": 49,
+      "setup_cost": 295,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "7": {
+      "demand": 36,
+      "setup_cost": 243,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "8": {
+      "demand": 47,
+      "setup_cost": 391,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "9": {
+      "demand": 47,
+      "setup_cost": 184,
+      "prod_cost": 0,
+      "holding_cost": 2
+    },
+    "10": {
+      "demand": 12,
+      "setup_cost": 325,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "11": {
+      "demand": 30,
+      "setup_cost": 437,
+      "prod_cost": 0,
+      "holding_cost": 2
+    },
+    "12": {
+      "demand": 48,
+      "setup_cost": 273,
+      "prod_cost": 0,
+      "holding_cost": 5
+    },
+    "13": {
+      "demand": 15,
+      "setup_cost": 417,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "14": {
+      "demand": 17,
+      "setup_cost": 357,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "15": {
+      "demand": 34,
+      "setup_cost": 367,
+      "prod_cost": 0,
+      "holding_cost": 4
+    }
+  },
+  "capacity": {
+    "1": 56,
+    "2": 32,
+    "3": 46,
+    "4": 33,
+    "5": 46,
+    "6": 36,
+    "7": 33,
+    "8": 47,
+    "9": 47,
+    "10": 16,
+    "11": 34,
+    "12": 68,
+    "13": 11,
+    "14": 25,
+    "15": 49
+  }
+}

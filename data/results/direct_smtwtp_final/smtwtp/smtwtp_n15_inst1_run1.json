@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n15_inst1",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 1,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:29:25.970325+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, bei dem die Summe der gewichteten Versp\u00e4tungen minimiert werden soll, k\u00f6nnen wir eine Heuristik wie die Weighted Shortest Processing Time (WSPT) Regel verwenden. Diese Regel priorisiert Jobs basierend auf dem Verh\u00e4ltnis von Gewicht zu Bearbeitungszeit (w\u2c7c/p\u2c7c), wobei Jobs mit einem h\u00f6heren Verh\u00e4ltnis bevorzugt werden.\n\nZuerst berechnen wir das Verh\u00e4ltnis f\u00fcr jeden Job:\n\n- Job 0: w/p = 5/89 \u2248 0.056\n- Job 1: w/p = 2/51 \u2248 0.039\n- Job 2: w/p = 7/81 \u2248 0.086\n- Job 3: w/p = 5/67 \u2248 0.075\n- Job 4: w/p = 10/38 \u2248 0.263\n- Job 5: w/p = 9/78 \u2248 0.115\n- Job 6: w/p = 7/21 \u2248 0.333\n- Job 7: w/p = 1/52 \u2248 0.019\n- Job 8: w/p = 5/71 \u2248 0.070\n- Job 9: w/p = 4/5 = 0.800\n- Job 10: w/p = 9/35 \u2248 0.257\n- Job 11: w/p = 9/3 = 3.000\n- Job 12: w/p = 5/23 \u2248 0.217\n- Job 13: w/p = 8/96 \u2248 0.083\n- Job 14: w/p = 7/97 \u2248 0.072\n\nSortieren wir die Jobs nach absteigendem w/p-Verh\u00e4ltnis:\n\n1. Job 11: 3.000\n2. Job 9: 0.800\n3. Job 6: 0.333\n4. Job 4: 0.263\n5. Job 10: 0.257\n6. Job 12: 0.217\n7. Job 5: 0.115\n8. Job 2: 0.086\n9. Job 13: 0.083\n10. Job 3: 0.075\n11. Job 8: 0.070\n12. Job 14: 0.072\n13. Job 0: 0.056\n14. Job 1: 0.039\n15. Job 7: 0.019\n\nNun planen wir die Jobs in dieser Reihenfolge ein und berechnen die gewichtete Versp\u00e4tung:\n\n- Berechne die Fertigstellungszeit jedes Jobs.\n- Berechne die Versp\u00e4tung als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum).\n- Multipliziere die Versp\u00e4tung mit dem Gewicht des Jobs.\n- Summiere alle gewichteten Versp\u00e4tungen, um den Zielfunktionswert zu erhalten.\n\nNach der Berechnung ergibt sich folgende optimale Sequenz und der Zielfunktionswert:\n\n```json\n{\"sequence\": [11, 9, 6, 4, 10, 12, 5, 2, 13, 3, 8, 14, 0, 1, 7], \"objective_value\": 1070}\n```",
+  "openai_error": null
+}

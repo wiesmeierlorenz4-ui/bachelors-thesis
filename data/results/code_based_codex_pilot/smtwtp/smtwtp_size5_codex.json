@@ -1,0 +1,11 @@
+{
+  "problem": "smtwtp",
+  "size": 5,
+  "model": "gpt-5.3-codex",
+  "reasoning_effort": "medium",
+  "success": true,
+  "n_debug_iterations": 0,
+  "verified_objective": 630.0,
+  "gurobi_optimal": 630.0,
+  "final_code": "import json\nimport itertools\n\n# Jobdaten\njobs = {\n    0: {\"processing_time\": 28, \"due_date\": 54, \"weight\": 4},\n    1: {\"processing_time\": 97, \"due_date\": 161, \"weight\": 2},\n    2: {\"processing_time\": 96, \"due_date\": 185, \"weight\": 6},\n    3: {\"processing_time\": 68, \"due_date\": 31, \"weight\": 4},\n    4: {\"processing_time\": 6, \"due_date\": 76, \"weight\": 8},\n}\n\ndef weighted_tardiness(sequence, data):\n    time = 0\n    total = 0\n    for j in sequence:\n        time += data[j][\"processing_time\"]\n        tardiness = max(0, time - data[j][\"due_date\"])\n        total += data[j][\"weight\"] * tardiness\n    return total\n\njob_ids = list(jobs.keys())\nbest_sequence = None\nbest_obj = None\n\nfor perm in itertools.permutations(job_ids):\n    obj = weighted_tardiness(perm, jobs)\n    if best_obj is None or obj < best_obj:\n        best_obj = obj\n        best_sequence = list(perm)\n\nprint(json.dumps({\"sequence\": best_sequence, \"objective_value\": best_obj}))"
+}

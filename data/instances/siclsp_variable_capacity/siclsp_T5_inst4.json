@@ -1,0 +1,46 @@
+{
+  "n_periods": 5,
+  "seed": 5046,
+  "problem": "siclsp",
+  "variant": "variable_capacity",
+  "generator_version": "siclsp_variable_capacity_v1",
+  "periods": {
+    "1": {
+      "demand": 12,
+      "setup_cost": 381,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "2": {
+      "demand": 22,
+      "setup_cost": 129,
+      "prod_cost": 0,
+      "holding_cost": 4
+    },
+    "3": {
+      "demand": 34,
+      "setup_cost": 316,
+      "prod_cost": 0,
+      "holding_cost": 1
+    },
+    "4": {
+      "demand": 24,
+      "setup_cost": 186,
+      "prod_cost": 0,
+      "holding_cost": 3
+    },
+    "5": {
+      "demand": 34,
+      "setup_cost": 446,
+      "prod_cost": 0,
+      "holding_cost": 5
+    }
+  },
+  "capacity": {
+    "1": 13,
+    "2": 34,
+    "3": 48,
+    "4": 31,
+    "5": 49
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "instance_id": "smtwtp_n5_inst4",
+  "problem": "smtwtp",
+  "approach": "plain_direct",
+  "run_number": 7,
+  "model": "gpt-4o-2024-08-06",
+  "timestamp": "2026-08-28T18:32:29.824929+00:00",
+  "raw_response": "Um das Single-Machine-Scheduling-Problem (1||\u03a3w\u2c7cT\u2c7c) zu l\u00f6sen, m\u00fcssen wir die Jobs so anordnen, dass die Summe der gewichteten Versp\u00e4tungen minimiert wird. Die Versp\u00e4tung eines Jobs ist definiert als max(0, Fertigstellungszeit - F\u00e4lligkeitsdatum). \n\nHier sind die Schritte zur L\u00f6sung des Problems:\n\n1. **Berechnung der Fertigstellungszeiten**: Die Fertigstellungszeit eines Jobs ist die Summe der Bearbeitungszeiten aller vorherigen Jobs plus die Bearbeitungszeit des aktuellen Jobs.\n\n2. **Berechnung der Versp\u00e4tungen**: Die Versp\u00e4tung eines Jobs ist die Differenz zwischen der Fertigstellungszeit und dem F\u00e4lligkeitsdatum, falls die Fertigstellungszeit gr\u00f6\u00dfer ist als das F\u00e4lligkeitsdatum.\n\n3. **Berechnung der gewichteten Versp\u00e4tungen**: Multipliziere die Versp\u00e4tung eines Jobs mit seinem Gewicht.\n\n4. **Optimierung**: Finde die Reihenfolge der Jobs, die die Summe der gewichteten Versp\u00e4tungen minimiert.\n\nNach der Analyse der gegebenen Daten und der Anwendung von Heuristiken zur Minimierung der gewichteten Versp\u00e4tungen, ergibt sich folgende optimale Reihenfolge der Jobs:\n\n```json\n{\"sequence\": [0, 2, 4, 3, 1], \"objective_value\": 1089}\n```",
+  "openai_error": null
+}
